@@ -10,7 +10,7 @@ Clone this repository to `src/modules/vsf-mapping-fallback` and use it like belo
 
 ```js
 import { extendMappingFallback, Payload } from 'src/modules/vsf-mapping-fallback'
-import { forProduct, forCategory, forStoryblok } from 'src/modules/vsf-mapping-fallback/builtin'
+import { forProduct, forCategory, forStoryblok, tap } from 'src/modules/vsf-mapping-fallback/builtin'
 
 export const forDemo = async (context, { url, params }: Payload) => {
   if (url === 'demo') {
@@ -22,7 +22,7 @@ export const forDemo = async (context, { url, params }: Payload) => {
 }
 
 extendMappingFallback(
-  forDemo, forProduct, forCategory, forStoryblok
+  forDemo, forProduct, forCategory, forStoryblok, tap
 )
 ```
 
@@ -40,3 +40,7 @@ The default mappingFallback for categories
 ### `forStoryblok`
 
 Mapper to be used with [vsf-storyblok-sync](https://github.com/kodbruket/vsf-storyblok-sync)
+
+### `tap`
+
+Prints payload to console
