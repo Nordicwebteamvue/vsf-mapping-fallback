@@ -2,7 +2,7 @@ import { removeStoreCodeFromRoute } from '@vue-storefront/core/lib/multistore'
 import { Payload } from '../types/Payload'
 
 export const forCategory = async ({ dispatch }, { url }: Payload) => {
-  url = (removeStoreCodeFromRoute(url) as string)
+  url = (removeStoreCodeFromRoute(url) as string).replace(/\/$/, "")
   try {
     const category = await dispatch('category/single', { key: 'url_path', value: url }, { root: true })
     if (category !== null) {
