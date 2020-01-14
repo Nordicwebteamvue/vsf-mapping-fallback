@@ -1,4 +1,4 @@
-import { extendModule } from '@vue-storefront/core/lib/module'
+import { extendStore } from '@vue-storefront/core/helpers'
 import { Payload } from './types/Payload'
 
 export { Payload }
@@ -16,9 +16,5 @@ export const extendMappingFallback = (...fns) => {
       }
     }
   }
-  const urlExtend = {
-    key: 'url',
-    store: { modules: [{ key: 'url', module: extendUrlVuex }] },
-  }
-  extendModule(urlExtend)
+  extendStore('url', extendUrlVuex)
 }
