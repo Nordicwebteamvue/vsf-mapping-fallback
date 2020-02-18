@@ -10,7 +10,6 @@ export const extendMappingFallback = (...fns) => {
       async mappingFallback (context, payload: Payload) {
         for (const fn of fns) {
           const result = await fn(context, payload);
-          console.log({[fn.name]: result})
           if (result) {
             return result
           }
