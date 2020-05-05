@@ -4,6 +4,7 @@ import { Payload } from '../types/Payload'
 export const forCategory = async ({ dispatch }, { url }: Payload) => {
   const { storeCode, appendStoreCode } = currentStoreView()
   url = (removeStoreCodeFromRoute(url.startsWith('/') ? url.slice(1) : url) as string)
+  url = url.replace(/\/$/, "")
   try {
     const category = await dispatch('category/single', { key: 'url_path', value: url }, { root: true })
     if (category !== null) {
