@@ -3,7 +3,7 @@ import { Payload } from '../types/Payload'
 export const forStoryblok = async ({ dispatch }, { url: fullSlug }: Payload) => {
   fullSlug = fullSlug || 'home'
   const story = await dispatch(`storyblok/loadStory`, { fullSlug }, { root: true })
-  if (story) {
+  if (story && story.story !== false) {
     return {
       name: 'storyblok',
       params: {
